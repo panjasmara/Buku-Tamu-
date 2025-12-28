@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Buku Tamu | SMKN 1 AMPELGADING</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{font-family:Arial;background:#020617;color:#fff;display:flex;justify-content:center;align-items:center;height:100vh}
+.box{background:#0f172a;padding:30px;border-radius:12px;width:350px}
+input,select,button{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:none}
+button{background:#00f2ff;color:#000;font-weight:bold;cursor:pointer}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>Buku Tamu</h2>
+<p>SMKN 1 AMPELGADING</p>
+
+<input id="nama" placeholder="Nama Lengkap">
+<input id="instansi" placeholder="Instansi / Sekolah">
+<select id="kategori">
+<option value="">Pilih Kategori</option>
+<option>Siswa SMP</option>
+<option>Siswa SMA/SMK</option>
+<option>Guru</option>
+<option>Umum</option>
+</select>
+
+<button onclick="simpan()">Simpan</button>
+</div>
+
+<script>
+function simpan(){
+  let data = JSON.parse(localStorage.getItem("bukutamu")) || [];
+  data.push({
+    nama:nama.value,
+    instansi:instansi.value,
+    kategori:kategori.value,
+    waktu:new Date().toLocaleString()
+  });
+  localStorage.setItem("bukutamu",JSON.stringify(data));
+  alert("Terima kasih telah mengisi buku tamu");
+}
+</script>
+
+</body>
+</html>
