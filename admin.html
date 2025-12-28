@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Admin Buku Tamu</title>
+<style>
+body{font-family:Arial;background:#020617;color:white;padding:30px}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #444;padding:8px}
+</style>
+</head>
+<body>
+
+<h2>Data Buku Tamu</h2>
+
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Nama</th>
+<th>Instansi</th>
+<th>Kategori</th>
+<th>Waktu</th>
+</tr>
+</thead>
+<tbody id="data"></tbody>
+</table>
+
+<script>
+let data = JSON.parse(localStorage.getItem("bukutamu")) || [];
+data.forEach((d,i)=>{
+document.getElementById("data").innerHTML += `
+<tr>
+<td>${i+1}</td>
+<td>${d.nama}</td>
+<td>${d.instansi}</td>
+<td>${d.kategori}</td>
+<td>${d.waktu}</td>
+</tr>`;
+});
+</script>
+
+</body>
+</html>
